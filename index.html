@@ -1,0 +1,1909 @@
+<title>Usta Sohib - Sementli Tiyaga Xizmati | Sifatli va Arzon</title> <style> * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --primary: #1a1a2e;
+        --secondary: #e94560;
+        --accent: #f5a623;
+        --gold: #c9a84c;
+        --dark: #0f0f1a;
+        --light: #f8f9fa;
+        --gray: #6c757d;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(15, 15, 26, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 15px 0;
+        transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+        padding: 10px 0;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+    }
+
+    .nav-logo-icon {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, var(--gold), var(--accent));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 18px;
+        color: var(--dark);
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .nav-logo-text {
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+
+    .nav-logo-text span {
+        color: var(--gold);
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+    }
+
+    .nav-links a {
+        color: #ccc;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .nav-links a:hover {
+        color: var(--gold);
+    }
+
+    .nav-phone {
+        color: var(--gold);
+        font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .hamburger span {
+        width: 28px;
+        height: 3px;
+        background: #fff;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+        min-height: 100vh;
+        background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, #16213e 100%);
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .hero::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(233,69,96,0.08) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-content h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: #fff;
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+
+    .hero-content h1 span {
+        background: linear-gradient(135deg, var(--gold), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-content p {
+        color: #aaa;
+        font-size: 1.15rem;
+        line-height: 1.7;
+        margin-bottom: 35px;
+    }
+
+    .hero-badges {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 35px;
+        flex-wrap: wrap;
+    }
+
+    .hero-badge {
+        background: rgba(201,168,76,0.15);
+        border: 1px solid rgba(201,168,76,0.3);
+        padding: 8px 20px;
+        border-radius: 50px;
+        color: var(--gold);
+        font-weight: 600;
+        font-size: 0.9rem;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--gold), var(--accent));
+        color: var(--dark);
+        padding: 16px 35px;
+        border: none;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(201,168,76,0.4);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: #fff;
+        padding: 16px 35px;
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-secondary:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+    }
+
+    .hero-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-image-wrapper {
+        position: relative;
+        width: 420px;
+        height: 420px;
+    }
+
+    .hero-image-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: -15px;
+        border-radius: 50%;
+        border: 2px solid rgba(201,168,76,0.3);
+        animation: spin 20s linear infinite;
+    }
+
+    .hero-image-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: -30px;
+        border-radius: 50%;
+        border: 1px dashed rgba(201,168,76,0.2);
+        animation: spin 30s linear infinite reverse;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .hero-main-circle {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(233,69,96,0.1));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border: 3px solid rgba(201,168,76,0.3);
+    }
+
+    .hero-main-circle .icon-big {
+        font-size: 5rem;
+        margin-bottom: 10px;
+    }
+
+    .hero-main-circle .label {
+        color: var(--gold);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .hero-main-circle .sublabel {
+        color: #888;
+        font-size: 0.85rem;
+        margin-top: 5px;
+    }
+
+    .floating-card {
+        position: absolute;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 15px;
+        padding: 15px 20px;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .floating-card:nth-child(2) {
+        top: 20px;
+        right: -20px;
+        animation-delay: 0.5s;
+    }
+
+    .floating-card:nth-child(3) {
+        bottom: 40px;
+        left: -30px;
+        animation-delay: 1s;
+    }
+
+    .floating-card:nth-child(4) {
+        bottom: 10px;
+        right: 10px;
+        animation-delay: 1.5s;
+    }
+
+    .floating-card .fc-number {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--gold);
+    }
+
+    .floating-card .fc-text {
+        font-size: 0.75rem;
+        color: #aaa;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    /* ===== STATS ===== */
+    .stats {
+        background: var(--dark);
+        padding: 60px 0;
+        border-top: 1px solid rgba(201,168,76,0.1);
+        border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .stats-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+
+    .stat-item {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .stat-number {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: var(--gold);
+        margin-bottom: 5px;
+    }
+
+    .stat-label {
+        color: #888;
+        font-size: 0.95rem;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+        padding: 100px 0;
+        background: var(--light);
+    }
+
+    .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-tag {
+        display: inline-block;
+        background: rgba(201,168,76,0.15);
+        color: var(--gold);
+        padding: 6px 20px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .section-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: var(--dark);
+        margin-bottom: 15px;
+    }
+
+    .section-title span {
+        color: var(--gold);
+    }
+
+    .section-subtitle {
+        color: var(--gray);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .about-image {
+        position: relative;
+    }
+
+    .about-img-box {
+        width: 100%;
+        height: 450px;
+        background: linear-gradient(135deg, var(--primary), var(--dark));
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about-img-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" x="50" text-anchor="middle" font-size="40">🏗️</text></svg>') center/100px no-repeat;
+        opacity: 0.1;
+    }
+
+    .about-img-content {
+        text-align: center;
+        z-index: 2;
+    }
+
+    .about-img-content .emoji {
+        font-size: 6rem;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .about-img-content .text {
+        color: var(--gold);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.3rem;
+    }
+
+    .about-experience-badge {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        background: linear-gradient(135deg, var(--gold), var(--accent));
+        color: var(--dark);
+        padding: 20px 30px;
+        border-radius: 15px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 1.2rem;
+        box-shadow: 0 10px 30px rgba(201,168,76,0.3);
+    }
+
+    .about-text h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 20px;
+    }
+
+    .about-text p {
+        color: var(--gray);
+        line-height: 1.8;
+        margin-bottom: 25px;
+        font-size: 1.05rem;
+    }
+
+    .about-features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .about-feature {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 15px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .about-feature .check {
+        width: 30px;
+        height: 30px;
+        background: rgba(201,168,76,0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold);
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .about-feature span {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--dark);
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+        padding: 100px 0;
+        background: #fff;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .service-card {
+        background: var(--light);
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: all 0.4s ease;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--gold), var(--accent));
+        transform: scaleX(0);
+        transition: transform 0.4s;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(201,168,76,0.2);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .service-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .service-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(245,166,35,0.1));
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        margin: 0 auto 25px;
+    }
+
+    .service-card h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 15px;
+    }
+
+    .service-card p {
+        color: var(--gray);
+        line-height: 1.7;
+        font-size: 0.95rem;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+        padding: 100px 0;
+        background: var(--dark);
+    }
+
+    .gallery .section-title {
+        color: #fff;
+    }
+
+    .gallery .section-subtitle {
+        color: #888;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .gallery-item {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, var(--primary), #16213e);
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.03);
+    }
+
+    .gallery-item:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .gallery-item-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .gallery-item-content .g-emoji {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+
+    .gallery-item-content .g-text {
+        color: var(--gold);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .gallery-item-content .g-sub {
+        color: #888;
+        font-size: 0.8rem;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        opacity: 0;
+        transition: opacity 0.3s;
+        display: flex;
+        align-items: flex-end;
+        padding: 20px;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+
+    .gallery-overlay span {
+        color: #fff;
+        font-weight: 600;
+    }
+
+    /* ===== PROCESS ===== */
+    .process {
+        padding: 100px 0;
+        background: var(--light);
+    }
+
+    .process-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        position: relative;
+    }
+
+    .process-steps::before {
+        content: '';
+        position: absolute;
+        top: 50px;
+        left: 12%;
+        right: 12%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--gold), var(--accent), var(--gold));
+        z-index: 0;
+    }
+
+    .process-step {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .step-number {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--gold), var(--accent));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 1.5rem;
+        color: var(--dark);
+        margin: 0 auto 20px;
+        box-shadow: 0 5px 20px rgba(201,168,76,0.3);
+    }
+
+    .process-step h4 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--dark);
+        margin-bottom: 10px;
+    }
+
+    .process-step p {
+        color: var(--gray);
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+        padding: 100px 0;
+        background: #fff;
+    }
+
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .testimonial-card {
+        background: var(--light);
+        border-radius: 20px;
+        padding: 35px;
+        position: relative;
+    }
+
+    .testimonial-card::before {
+        content: '"';
+        font-size: 5rem;
+        color: rgba(201,168,76,0.2);
+        font-family: serif;
+        position: absolute;
+        top: 10px;
+        left: 25px;
+        line-height: 1;
+    }
+
+    .testimonial-stars {
+        color: var(--accent);
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .testimonial-text {
+        color: var(--gray);
+        line-height: 1.7;
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .testimonial-avatar {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold), var(--accent));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: var(--dark);
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .testimonial-name {
+        font-weight: 700;
+        color: var(--dark);
+        font-size: 0.95rem;
+    }
+
+    .testimonial-role {
+        color: var(--gray);
+        font-size: 0.8rem;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+        padding: 100px 0;
+        background: linear-gradient(135deg, var(--dark), var(--primary));
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(201,168,76,0.1), transparent 70%);
+        border-radius: 50%;
+    }
+
+    .cta-content {
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .cta-content h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 20px;
+    }
+
+    .cta-content h2 span {
+        color: var(--gold);
+    }
+
+    .cta-content p {
+        color: #aaa;
+        font-size: 1.15rem;
+        margin-bottom: 40px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .cta-phone {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--gold);
+        margin-bottom: 30px;
+        display: block;
+        text-decoration: none;
+    }
+
+    .cta-phone:hover {
+        text-decoration: underline;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+        padding: 100px 0;
+        background: var(--light);
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+    }
+
+    .contact-info h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 20px;
+    }
+
+    .contact-info p {
+        color: var(--gray);
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+
+    .contact-items {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .contact-item:hover {
+        transform: translateX(5px);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .contact-item-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(245,166,35,0.1));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    .contact-item-text {
+        font-weight: 600;
+        color: var(--dark);
+    }
+
+    .contact-item-sub {
+        font-size: 0.85rem;
+        color: var(--gray);
+    }
+
+    .contact-form {
+        background: #fff;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    .contact-form h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-family: 'Open Sans', sans-serif;
+        transition: border-color 0.3s;
+        outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+        border-color: var(--gold);
+    }
+
+    .form-group textarea {
+        height: 120px;
+        resize: vertical;
+    }
+
+    .form-submit {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, var(--gold), var(--accent));
+        color: var(--dark);
+        border: none;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+        transition: all 0.3s;
+    }
+
+    .form-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(201,168,76,0.3);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+        background: var(--dark);
+        padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-brand .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .footer-brand .footer-logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--gold), var(--accent));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        color: var(--dark);
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .footer-brand .footer-logo-text {
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .footer-brand p {
+        color: #888;
+        line-height: 1.7;
+        font-size: 0.9rem;
+    }
+
+    .footer-col h4 {
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        margin-bottom: 20px;
+        font-size: 1rem;
+    }
+
+    .footer-col ul {
+        list-style: none;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+        color: #888;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+        color: var(--gold);
+    }
+
+    .footer-social {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .footer-social a {
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s;
+        font-size: 1.1rem;
+    }
+
+    .footer-social a:hover {
+        background: var(--gold);
+        color: var(--dark);
+    }
+
+    .footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 20px 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-bottom p {
+        color: #666;
+        font-size: 0.85rem;
+    }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 999;
+        width: 60px;
+        height: 60px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: #fff;
+        text-decoration: none;
+        box-shadow: 0 5px 25px rgba(37,211,102,0.4);
+        animation: pulse 2s infinite;
+        transition: transform 0.3s;
+    }
+
+    .whatsapp-float:hover {
+        transform: scale(1.1);
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
+        70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+        100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+        .hero-container {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero-badges {
+            justify-content: center;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+        }
+
+        .hero-visual {
+            display: none;
+        }
+
+        .stats-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .process-steps {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .process-steps::before {
+            display: none;
+        }
+
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--dark);
+            flex-direction: column;
+            padding: 20px;
+            gap: 15px;
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+
+        .nav-phone {
+            display: none;
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+        }
+
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .gallery-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 1;
+        }
+
+        .process-steps {
+            grid-template-columns: 1fr;
+        }
+
+        .about-features {
+            grid-template-columns: 1fr;
+        }
+
+        .cta-content h2 {
+            font-size: 1.8rem;
+        }
+
+        .cta-phone {
+            font-size: 1.4rem;
+        }
+
+        .footer-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+    }
+</style>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#" class="nav-logo">
+            <div class="nav-logo-icon">US</div>
+            <div class="nav-logo-text">Usta <span>Sohib</span></div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#bosh-sahifa">Bosh sahifa</a></li>
+            <li><a href="#biz-haqimizda">Biz haqimizda</a></li>
+            <li><a href="#xizmatlar">Xizmatlar</a></li>
+            <li><a href="#galereya">Galereya</a></li>
+            <li><a href="#aloqa">Aloqa</a></li>
+        </ul>
+        <a href="tel:+998945566990" class="nav-phone">📞 +998 94 556 69 90</a>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="bosh-sahifa">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>Professional <span>Sementli Tiyaga</span> Xizmati</h1>
+            <p>Umarov Sohibjon — tajribali usta sifatida uyingizga yuqori sifatli sementli tiyaga xizmatini taklif etadi. Sifatli ish, arzon narx, o'z vaqtida bajarish kafolati.</p>
+            <div class="hero-badges">
+                <div class="hero-badge">✅ Sifatli ish</div>
+                <div class="hero-badge">💰 Arzon narx</div>
+                <div class="hero-badge"> O'z vaqtida</div>
+            </div>
+            <div class="hero-buttons">
+                <a href="tel:+998945566990" class="btn-primary">📞 Qo'ng'iroq qilish</a>
+                <a href="#xizmatlar" class="btn-secondary"> Xizmatlarni ko'rish</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-image-wrapper">
+                <div class="hero-main-circle">
+                    <span class="icon-big">️</span>
+                    <span class="label">USTA SOHIB</span>
+                    <span class="sublabel">Tiyaga Jamoasi</span>
+                </div>
+                <div class="floating-card">
+                    <div class="fc-number">855+</div>
+                    <div class="fc-text">Loyihalar</div>
+                </div>
+                <div class="floating-card">
+                    <div class="fc-number">8.9K</div>
+                    <div class="fc-text">Obunachilar</div>
+                </div>
+                <div class="floating-card">
+                    <div class="fc-number">5★</div>
+                    <div class="fc-text">Reyting</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="stats-container">
+        <div class="stat-item">
+            <div class="stat-number" data-target="855">0</div>
+            <div class="stat-label">Bajarilgan loyihalar</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" data-target="8913">0</div>
+            <div class="stat-label">Mamnun mijozlar</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" data-target="10">0</div>
+            <div class="stat-label">Yillik tajriba</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" data-target="100">0</div>
+            <div class="stat-label">% Kafolat</div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="biz-haqimizda">
+    <div class="section-container">
+        <div class="section-header">
+            <div class="section-tag">Biz haqimizda</div>
+            <h2 class="section-title">Nega aynan <span>Usta Sohib</span>?</h2>
+            <p class="section-subtitle">Professional jamoa bilan uyingizni ishonchli qo'llarga topshiring</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-image">
+                <div class="about-img-box">
+                    <div class="about-img-content">
+                        <span class="emoji">👷‍♂️</span>
+                        <span class="text">Umarov Sohibjon</span>
+                    </div>
+                </div>
+                <div class="about-experience-badge">10+ yil tajriba</div>
+            </div>
+            <div class="about-text">
+                <h3>Tajribali usta — sifatli natija</h3>
+                <p>Men Umarov Sohibjon, 10 yildan ortiq tajribaga ega professional usta sifatida sementli tiyaga xizmatini taklif etaman. Har bir loyihaga individual yondashuv, zamonaviy uskunalar va sifatli materiallar ishlataman.</p>
+                <p>Instagram sahifamda 8,900+ obunachi va 855+ nashr orqali o'z ishlarimni namoyish etib kelmoqdaman. YouTube kanalimda ham ish jarayonlarini ko'rishingiz mumkin.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="check">✓</div>
+                        <span>Bepul konsultatsiya</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">✓</div>
+                        <span>Sifatli materiallar</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">✓</div>
+                        <span>O'z vaqtida yetkazish</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">✓</div>
+                        <span>Kafolat beriladi</span>
+                    </div>
+                </div>
+                <a href="tel:+998945566990" class="btn-primary">📞 Bog'lanish</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="xizmatlar">
+    <div class="section-container">
+        <div class="section-header">
+            <div class="section-tag">Xizmatlar</div>
+            <h2 class="section-title">Bizning <span>xizmatlar</span></h2>
+            <p class="section-subtitle">To'liq qurilish va tiyaga xizmatlari bir joyda</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Sementli Tiyaga</h3>
+                <p>Uy devorlariga professional sementli tiyaga qo'yish. Tekis, chiroyli va mustahkam yuzalar yaratamiz.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"></div>
+                <h3>Fasad Tiyaga</h3>
+                <p>Bino tashqi qismlariga sifatli fasad tiyaga xizmati. Ob-havoga chidamli materiallar bilan ishlaymiz.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Ichki Tiyaga</h3>
+                <p>Uy ichki devorlariga tekis va silliq tiyaga. Keyingi bezak ishlari uchun mukammal tayyorlov.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"></div>
+                <h3>Qurilish Ishlari</h3>
+                <p>Keng qamrovli qurilish xizmatlari — poydevordan tomlashgacha barcha ishlar bir joyda.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📐</div>
+                <h3>Loyihalash</h3>
+                <p>Uy loyihasini tuzish va maslahat berish. Professional yondashuv bilan eng yaxshi natijani ta'minlaymiz.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Bezak Ishlari</h3>
+                <p>Tiyaga ustidan dekorativ bezak va bo'yash ishlari. Uyingizga chiroyli ko'rinish beramiz.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galereya">
+    <div class="section-container">
+        <div class="section-header">
+            <div class="section-tag">Galereya</div>
+            <h2 class="section-title">Bajarilgan <span>ishlar</span></h2>
+            <p class="section-subtitle">Bizning eng yaxshi loyihalarimizdan namunalar</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-item-content">
+                    <span class="g-emoji">🏘️</span>
+                    <span class="g-text">Turar-joy majmuasi</span>
+                    <span class="g-sub">To'liq tiyaga ishlari</span>
+                </div>
+                <div class="gallery-overlay"><span>Batafsil ko'rish →</span></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-content">
+                    <span class="g-emoji">🏡</span>
+                    <span class="g-text">Shaxsiy uy</span>
+                    <span class="g-sub">Fasad tiyaga</span>
+                </div>
+                <div class="gallery-overlay"><span>Batafsil ko'rish →</span></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-content">
+                    <span class="g-emoji">🏛️</span>
+                    <span class="g-text">Ustunlar</span>
+                    <span class="g-sub">Dekorativ tiyaga</span>
+                </div>
+                <div class="gallery-overlay"><span>Batafsil ko'rish →</span></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-content">
+                    <span class="g-emoji">🏠</span>
+                    <span class="g-text">Kottej</span>
+                    <span class="g-sub">Ichki tiyaga</span>
+                </div>
+                <div class="gallery-overlay"><span>Batafsil ko'rish →</span></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-content">
+                    <span class="g-emoji">️</span>
+                    <span class="g-text">Ko'p qavatli uy</span>
+                    <span class="g-sub">Qurilish ishlari</span>
+                </div>
+                <div class="gallery-overlay"><span>Batafsil ko'rish →</span></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-content">
+                    <span class="g-emoji">✨</span>
+                    <span class="g-text">Tayyor natija</span>
+                    <span class="g-sub">Sifatli ish</span>
+                </div>
+                <div class="gallery-overlay"><span>Batafsil ko'rish →</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+    <div class="section-container">
+        <div class="section-header">
+            <div class="section-tag">Jarayon</div>
+            <h2 class="section-title">Ish <span>jarayoni</span></h2>
+            <p class="section-subtitle">4 oddiy qadamda sifatli natijaga erishing</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h4>Bog'lanish</h4>
+                <p>Telefon yoki Telegram orqali biz bilan bog'laning va muammoingizni ayting</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h4>O'lchash</h4>
+                <p>Bepul joyida o'lchash va hisob-kitob qilamiz. Narxni kelishamiz</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h4>Ish bajarish</h4>
+                <p>Professional jamoa sifatli materiallar bilan ishni boshlaydi</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h4>Topshirish</h4>
+                <p>Ishni o'z vaqtida topshiramiz va kafolat beramiz</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+    <div class="section-container">
+        <div class="section-header">
+            <div class="section-tag">Fikrlar</div>
+            <h2 class="section-title">Mijozlar <span>fikrlari</span></h2>
+            <p class="section-subtitle">Bizning xizmatlarimiz haqida mijozlarimiz nima deydi</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">Juda sifatli ish qildilar. Uyimizning devorlari mukammal ko'rinadi. Narxi ham arzon. Tavsiya qilaman!</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">A</div>
+                    <div>
+                        <div class="testimonial-name">Akbar M.</div>
+                        <div class="testimonial-role">Uy egasi</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">O'z vaqtida ishni tugatdilar. Materiallar ham sifatli edi. Sohibjon aka juda professional usta ekan.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">J</div>
+                    <div>
+                        <div class="testimonial-name">Javohir B.</div>
+                        <div class="testimonial-role">Tadbirkor</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">Instagram orqali topdim va juda mamnun bo'ldim. Ish sifati a'lo darajada. Keyingi loyihamda ham ishlataman.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">S</div>
+                    <div>
+                        <div class="testimonial-name">Sardor K.</div>
+                        <div class="testimonial-role">Qurilishchi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <div class="section-container">
+        <div class="cta-content">
+            <h2>Loyihangizni <span>bugun</span> boshlang!</h2>
+            <p>Bepul konsultatsiya va hisob-kitob uchun hoziroq qo'ng'iroq qiling. Sifatli ish, arzon narx kafolati!</p>
+            <a href="tel:+998945566990" class="cta-phone">📞 +998 94 556 69 90</a>
+            <div class="cta-buttons">
+                <a href="https://t.me/+998945566990" class="btn-primary" target="_blank">💬 Telegram yozish</a>
+                <a href="https://www.youtube.com/@usta_sohib" class="btn-secondary" target="_blank">▶️ YouTube kanal</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="aloqa">
+    <div class="section-container">
+        <div class="section-header">
+            <div class="section-tag">Aloqa</div>
+            <h2 class="section-title">Biz bilan <span>bog'laning</span></h2>
+            <p class="section-subtitle">Savollaringiz bormi? Biz bilan bog'laning!</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Aloqa ma'lumotlari</h3>
+                <p>Quyidagi usullardan biri orqali biz bilan bog'laning. Bepul konsultatsiya va hisob-kitob taklif etamiz.</p>
+                <div class="contact-items">
+                    <a href="tel:+998945566990" class="contact-item">
+                        <div class="contact-item-icon"></div>
+                        <div>
+                            <div class="contact-item-text">+998 94 556 69 90</div>
+                            <div class="contact-item-sub">Qo'ng'iroq qiling</div>
+                        </div>
+                    </a>
+                    <a href="https://t.me/+998945566990" class="contact-item" target="_blank">
+                        <div class="contact-item-icon">💬</div>
+                        <div>
+                            <div class="contact-item-text">Telegram</div>
+                            <div class="contact-item-sub">Xabar yozing</div>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/usta_sohib" class="contact-item" target="_blank">
+                        <div class="contact-item-icon">📸</div>
+                        <div>
+                            <div class="contact-item-text">@usta_sohib</div>
+                            <div class="contact-item-sub">Instagram sahifa</div>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/@usta_sohib" class="contact-item" target="_blank">
+                        <div class="contact-item-icon">▶️</div>
+                        <div>
+                            <div class="contact-item-text">YouTube kanal</div>
+                            <div class="contact-item-sub">Videolarni ko'ring</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>📋 Ariza qoldiring</h3>
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label>Ismingiz</label>
+                        <input type="text" placeholder="Ismingizni kiriting" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon raqamingiz</label>
+                        <input type="tel" placeholder="+998 __ ___ __ __" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Xizmat turi</label>
+                        <select required>
+                            <option value="">Tanlang...</option>
+                            <option>Sementli tiyaga</option>
+                            <option>Fasad tiyaga</option>
+                            <option>Ichki tiyaga</option>
+                            <option>Qurilish ishlari</option>
+                            <option>Loyihalash</option>
+                            <option>Bezak ishlari</option>
+                            <option>Boshqa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Xabar</label>
+                        <textarea placeholder="Loyihangiz haqida qisqacha yozing..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">📩 Ariza yuborish</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="footer-logo">
+                <div class="footer-logo-icon">US</div>
+                <div class="footer-logo-text">Usta Sohib</div>
+            </div>
+            <p>Professional sementli tiyaga xizmati. Sifatli ish, arzon narx, o'z vaqtida bajarish. Umarov Sohibjon — 10+ yil tajriba.</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/usta_sohib" target="_blank">📸</a>
+                <a href="https://www.youtube.com/@usta_sohib" target="_blank">▶️</a>
+                <a href="https://t.me/+998945566990" target="_blank">💬</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Sahifalar</h4>
+            <ul>
+                <li><a href="#bosh-sahifa">Bosh sahifa</a></li>
+                <li><a href="#biz-haqimizda">Biz haqimizda</a></li>
+                <li><a href="#xizmatlar">Xizmatlar</a></li>
+                <li><a href="#galereya">Galereya</a></li>
+                <li><a href="#aloqa">Aloqa</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Xizmatlar</h4>
+            <ul>
+                <li><a href="#xizmatlar">Sementli tiyaga</a></li>
+                <li><a href="#xizmatlar">Fasad tiyaga</a></li>
+                <li><a href="#xizmatlar">Ichki tiyaga</a></li>
+                <li><a href="#xizmatlar">Qurilish ishlari</a></li>
+                <li><a href="#xizmatlar">Bezak ishlari</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Aloqa</h4>
+            <ul>
+                <li><a href="tel:+998945566990">+998 94 556 69 90</a></li>
+                <li><a href="https://t.me/+998945566990" target="_blank">Telegram</a></li>
+                <li><a href="https://www.instagram.com/usta_sohib" target="_blank">Instagram</a></li>
+                <li><a href="https://www.youtube.com/@usta_sohib" target="_blank">YouTube</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Usta Sohib. Barcha huquqlar himoyalangan.</p>
+        <p>Umarov Sohibjon | Sementli Tiyaga Xizmati</p>
+    </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://t.me/+998945566990" class="whatsapp-float" target="_blank" title="Telegram orqali yozish"></a>
+
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Mobile menu toggle
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navLinks').classList.remove('active');
+        });
+    });
+
+    // Counter animation
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                    counter.textContent = Math.floor(current).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target.toLocaleString() + (target === 100 ? '%' : '+');
+                }
+            };
+
+            updateCounter();
+        });
+    }
+
+    // Intersection Observer for counters
+    const statsSection = document.querySelector('.stats');
+    let counterAnimated = false;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !counterAnimated) {
+                animateCounters();
+                counterAnimated = true;
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(statsSection);
+
+    // Form submission
+    function handleSubmit(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('.form-submit');
+        btn.textContent = '✅ Yuborildi!';
+        btn.style.background = '#25d366';
+        btn.style.color = '#fff';
+        setTimeout(() => {
+            btn.textContent = ' Ariza yuborish';
+            btn.style.background = '';
+            btn.style.color = '';
+            e.target.reset();
+        }, 3000);
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
