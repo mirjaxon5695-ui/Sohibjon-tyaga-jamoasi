@@ -1,0 +1,1 @@
+# Sohibjon-tyaga-jamoasi
